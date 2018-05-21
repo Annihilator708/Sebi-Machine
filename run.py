@@ -2,6 +2,7 @@
 # -*- coding: utf8 -*-
 
 # Import packages
+import asyncio
 import discord
 from discord.ext import commands
 import json
@@ -10,6 +11,24 @@ import random
 
 # Import custom files
 from src.config.config import LoadConfig
+
+# If uvloop is installed, change to that eventloop policy as it 
+# is more efficient
+try:
+    # Temp fix for https://github.com/MagicStack/uvloop/pull/138
+    # until it hopefully gets fixed by next week?
+    import sys
+    if sys.version_info()[1] > 6:
+        raise RuntimeError('Disabling uvloop for Python3.7 and newer.')
+    
+    import uvloop
+    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+    del uvloop
+except BaseException as ex:
+    print(f'Could not load uvloop. {type(ex).__name__}: {ex};',
+          'reverting to default impl.')
+else:
+    print(f'Using uvloop for asyncio event loop policy.')
 
 
 # Bot Class
