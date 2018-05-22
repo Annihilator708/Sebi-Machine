@@ -1,10 +1,15 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+
+# Recurse
+**/__pycache__
+
 *.py[cod]
 *$py.class
 
 # C extensions
 *.so
+# Object files
+*.o
 
 # Distribution / packaging
 .Python
@@ -105,4 +110,3 @@ venv.bak/
 
 /src/config/Config.json
 /src/config/PrivateConfig.json
-.idea/
