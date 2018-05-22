@@ -81,7 +81,7 @@ class Upload:
     @commands.command()
     async def err(self, ctx):
         """triggers error to test traceback"""
-        await ctx.send(a)
+        raise Exception("test error")
 
 def setup(bot):
     bot.add_cog(Upload(bot))
