@@ -108,6 +108,6 @@ async def run_command(args):
         # stdout must a pipe to be accessible as process.stdout
         stdout=asyncio.subprocess.PIPE)
     # Wait for the subprocess to finish
-    stdout, stderr = await process.communicate()
+    stdout, _ = await process.communicate()
     # Return stdout
     return stdout.decode().strip()
