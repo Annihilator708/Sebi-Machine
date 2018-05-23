@@ -1,4 +1,4 @@
 {
   'name':'sebi-machine',
-  'stack':'container',
+  'stack':'container'
 }
