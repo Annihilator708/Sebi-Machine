@@ -9,4 +9,5 @@
     'ownerlist':{
       'required': true,
       'description': 'list of owner ids seperated with commas'
+    }
 }
