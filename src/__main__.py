@@ -99,6 +99,9 @@ client = SebiMachine()
 # I am 99% certain this is valid!
 with open(in_here('config', 'PrivateConfig.json')) as fp:
     PrivateConfig = json.load(fp)
+print(PrivateConfig)
+print(os.environ)
 if PrivateConfig["bot-key"] == '':
     PrivateConfig["bot-key"] = os.getenv('bot-key')
+print(PrivateConfig)
 client.run(PrivateConfig["bot-key"])
