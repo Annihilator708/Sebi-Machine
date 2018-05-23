@@ -3,11 +3,9 @@
   'stack':'container',
   'env': {
     'bot-key':{
-      'required': true,
       'description': 'the bot token you wish to run on'
     },
     'ownerlist':{
-      'required': true,
       'description': 'list of owner ids seperated with commas'
     }
 }
