@@ -74,6 +74,11 @@ class SebiMachine(commands.Bot, LoadConfig, Loggable):
         ctx   : Context
         error : Exception
         """
+
+        # if it is this particular type of error, do nothing
+        if isinstance(error, commands.CommandNotFound):
+            return
+
         jokes = ["I\'m a bit tipsy, I took to many screenshots...",
                  "I am rushing to the 24/7 store to get myself anti-bug spray...",
                  "Organizing turtle race...",
@@ -92,14 +97,15 @@ class SebiMachine(commands.Bot, LoadConfig, Loggable):
         tb = ''.join(tb)
         joke = random.choice(jokes)
         fmt = f'**`{self.defaultprefix}{ctx.command}`**\n{joke}\n\n**{type(error).__name__}:**:\n```py\n{tb}\n```'
-        simple_fmt = f'**`{self.defaultprefix}{ctx.command}`**\n{joke}\n\n**{type(error).__name__}:**:\n**`{error}`**'
+        
+        # unused variable
+        # simple_fmt = f'**`{self.defaultprefix}{ctx.command}`**\n{joke}\n\n**{type(error).__name__}:**:\n**`{error}`**'
         
         # Stops the error handler erroring.
         try:
             await ctx.send(fmt)
         except:
             traceback.print_exc()
-
 
 client = SebiMachine()
 # Make sure the key stays private.

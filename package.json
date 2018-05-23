@@ -1,0 +1,22 @@
+{
+  "name": "sebi-machine",
+  "version": "1.0.0",
+  "description": "Dedicated discord bot for Sebi's bot tutorial.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Annihilator708/Sebi-Machine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Annihilator708/Sebi-Machine/issues"
+  },
+  "homepage": "https://github.com/Annihilator708/Sebi-Machine#readme",
+  "dependencies": {
+    "discord.js": "^11.3.2"
+  }
+}
