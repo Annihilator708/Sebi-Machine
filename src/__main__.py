@@ -61,6 +61,43 @@ class SebiMachine(commands.Bot, LoadConfig, Loggable):
         """On ready function"""
         self.maintenance and self.logger.warning('MAINTENANCE ACTIVE')
 
+    async def on_command_error(self, ctx, error):
+        """
+        The event triggered when an error is raised while invoking a command.
+        ctx   : Context
+        error : Exception
+        """
+
+        # if it is this particular type of error, do nothing
+        if type(error).__name__ == "CommandNotFound":
+            return
+
+        jokes = ["I\'m a bit tipsy, I took to many screenshots...",
+                 "I am rushing to the 24/7 store to get myself anti-bug spray...",
+                 "Organizing turtle race...",
+                 "There is no better place then 127.0.0.1...",
+                 "Recycling Hex Decimal...",
+                 "No worry, I get fixed :^)...",
+                 "R.I.P, press F for respect...",
+                 "The bug repellent dit not work...",
+                 "You found a bug in the program. Unfortunately the joke did not fit here, better luck next time..."]
+
+        # CommandErrors triggered by other propagating errors tend to get wrapped. This means
+        # if we have a cause, we should probably consider unwrapping that so we get a useful
+        # message.
+        error = error.__cause__ or error
+        tb = traceback.format_exception(type(error), error, error.__traceback__, limit=2, chain=False)
+        tb = ''.join(tb)
+        joke = random.choice(jokes)
+        fmt = f'**`{self.defaultprefix}{ctx.command}`**\n{joke}\n\n**{type(error).__name__}:**:\n```py\n{tb}\n```'
+        simple_fmt = f'**`{self.defaultprefix}{ctx.command}`**\n{joke}\n\n**{type(error).__name__}:**:\n**`{error}`**'
+        
+        # Stops the error handler erroring.
+        try:
+            await ctx.send(fmt)
+        except:
+            traceback.print_exc()
+
 client = SebiMachine()
 # Make sure the key stays private.
 # I am 99% certain this is valid!
