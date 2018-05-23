@@ -7,7 +7,7 @@
             "description": "comma seperated list of owner ids",
             "required":  true
         },
-        "bot-key": {
+        "botkey": {
             "description": "bot token",
             "required":  true
         }
