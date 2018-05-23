@@ -15,7 +15,7 @@ class LoadConfig:
             self.config = json.load(fp)
 
         # Initialize config
-        if self.config["ownerlist"] not []:
+        if self.config["ownerlist"] != []:
             self.ownerlist = self.config["ownerlist"]
         else:
             self.ownerlist = [int(i) for i in os.getenv('ownerlist').split(',')]
