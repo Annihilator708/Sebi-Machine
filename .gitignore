@@ -113,3 +113,6 @@ venv.bak/
 
 # Ignore dockerfiles
 docker-compose.yml
+
+.vscode/
+node_modules/
