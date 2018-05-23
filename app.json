@@ -1,6 +1,6 @@
 {
-  'name':'sebi-machine',
-  'stack':'container',
+  "name":"sebi-machine",
+  "stack":"container",
   "env": {
 
         "ownerlist": {
