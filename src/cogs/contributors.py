@@ -1,8 +1,8 @@
 #!/usr/bin/python
-# -*- coding: <encoding name> -*-
+# -*- coding: utf-8 -*-
 
 from discord.ext import commands
-import os
+import discord
 import traceback
 
 class Upload:
@@ -80,13 +80,6 @@ class Upload:
             await ctx.send(f'Could not unload `{extension}` -> `{e}`')
         else:
             await ctx.send(f'Loaded `{extension}`.')
-
-    @commands.command()
-    async def err(self, ctx):
-        """triggers error to test traceback"""
-        await ctx.send(a)
-
-
 
 def setup(bot):
     bot.add_cog(Upload(bot))
