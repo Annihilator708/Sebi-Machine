@@ -83,14 +83,16 @@ class Upload:
             await ctx.send(f'Loaded `{extension}`.')
       
     @commands.command()
-    async def permunload(self, ctx, cog=None):
+    async def permunload(self, ctx, extension=None):
         """Disables permanently a cog."""
         await ctx.trigger_typing()
         if ctx.author.id not in self.bot.ownerlist:
             return await ctx.send('Only my contributors can use me like this :blush:', delete_after=10)
         
         if cog is None:
-            return await ctx.send("Please provide a cog. Do `help permunload` for more info")
+            return await ctx.send("Please provide a extension. Do `help permunload` for more info")
+        
+        extension = extension.lower()
         
         async with aiofiles.open("cogs.txt") as fp:
             lines=fp.readlines()
@@ -98,16 +100,16 @@ class Upload:
         removed = False
         async with aiofiles.open("cogs.txt", "w") as fp:
             for i in lines:
-                if i.replace("\n", "") != cog:
+                if i.replace("\n", "") != extension:
                     fp.write(i)
                 else:
                     removed = True
                     break
                     
         if removed is True:           
-            return await ctx.send("Cog removed successfully")
+            return await ctx.send("Extension removed successfully")
         
-        await ctx.send("Cog not found")
+        await ctx.send("Extension not found")
 
 def setup(bot):
     bot.add_cog(Upload(bot))
