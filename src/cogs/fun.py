@@ -8,7 +8,7 @@ import aiohttp
 
 class Fun:
     """
-    CogName should be the name of the cog
+    Fun Commands
     """
     def __init__(self, bot):
         self.bot = bot
@@ -16,7 +16,7 @@ class Fun:
     @commands.command()
     async def sebisauce(self, ctx):
         """
-        Get a image related to Sebi.
+        Sends a random sebisauce picture.
         Sebi is a random guy with perfect code related jokes.
 
         Usage:

@@ -7,7 +7,7 @@ import traceback
 
 class Upload:
     """
-    CogName should be the name of the cog
+    Upload Commands
     """
     def __init__(self, bot):
         self.bot = bot
