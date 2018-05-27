@@ -94,11 +94,11 @@ class Upload:
         
         extension = extension.lower()
         
-        async with aiofiles.open("cogs.txt") as fp:
+        async with aiofiles.open("extension.txt") as fp:
             lines=fp.readlines()
             
         removed = False
-        async with aiofiles.open("cogs.txt", "w") as fp:
+        async with aiofiles.open("extension.txt", "w") as fp:
             for i in lines:
                 if i.replace("\n", "") != extension:
                     fp.write(i)
@@ -106,7 +106,11 @@ class Upload:
                     removed = True
                     break
                     
-        if removed is True:           
+        if removed is True:
+            try:
+                self.bot.unload_extension(extension)
+            except:
+                pass
             return await ctx.send("Extension removed successfully")
         
         await ctx.send("Extension not found")
