@@ -53,6 +53,7 @@ class SebiMachine(commands.Bot, LoadConfig, Loggable):
         LoadConfig.__init__(self)
         commands.Bot.__init__(self, command_prefix=self.defaultprefix)
 
+        """
         # Load plugins
         # Add your cog file name in this list
         with open(in_here('cogs.txt')) as cog_file:
@@ -63,7 +64,16 @@ class SebiMachine(commands.Bot, LoadConfig, Loggable):
             cog = cog.replace('\n', '')
             self.load_extension(f'src.cogs.{cog}')
             self.logger.info(f'Loaded: {cog}')
+        """
 
+        cogs = os.listdir(os.path.join(".", "cogs"))
+
+        for cog in cogs:
+            if cog.endswith(".py") and cog is not "__init__.py":
+                cog = cog.replace(".py", "")
+                self.load_extension(f"src.cogs.{cog}")
+                self.logger.info(f"Loaded: {cog}")
+        
     async def on_ready(self):
         """On ready function"""
         self.maintenance and self.logger.warning('MAINTENANCE ACTIVE')
