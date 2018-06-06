@@ -23,7 +23,7 @@ class BasicCommands:
 		def check(m):
 			return True if m.author.id == ctx.author.id else False
 		
-		msg = await bot.wait_for('message', check = check, timeout = 15)
+		msg = await self.bot.wait_for('message', check = check, timeout = 15)
 		agree = ("yes", "yep", "yesn't", "ya")
 
 		if msg is None:
