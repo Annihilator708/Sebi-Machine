@@ -141,6 +141,10 @@ class SebiMachine(commands.Bot, LoadConfig, Loggable):
 
         # process command
         await self.process_commands(message)
+		
+	async def on_member_join(self, member):
+		if member.bot is True:
+			await member.add_roles(discord.utils.get(member.guild.roles, name='Bot'))
 
 
 client = SebiMachine()
